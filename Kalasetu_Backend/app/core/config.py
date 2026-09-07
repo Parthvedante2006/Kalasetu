@@ -3,4 +3,11 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-PHOTOROOM_API_KEY = os.getenv("PHOTOROOM_API_KEY")
+GROQ_API_KEY = os.getenv("GROQ_API_KEY")
+
+# Directory where enhanced product images are saved on the laptop
+STORAGE_DIR = os.path.join(os.path.dirname(__file__), "..", "storage", "images")
+os.makedirs(STORAGE_DIR, exist_ok=True)
+
+# Max upload size accepted from the phone (bytes)
+MAX_UPLOAD_BYTES = 20 * 1024 * 1024  # 20 MB
