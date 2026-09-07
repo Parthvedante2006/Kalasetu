@@ -10,12 +10,31 @@ from app.core.config import GROQ_API_KEY
 client = Groq(api_key=GROQ_API_KEY)
 
 DATA_PATH = os.path.join(os.path.dirname(__file__), "..", "data", "sample_products.json")
-DEFAULT_HOURLY_RATE = 150  # ₹ per hour, fallback
+
+# --- Category-wise hourly rate (₹ per hour) ---
+# Jitna zyada skill/detail wala kaam, utna zyada rate.
+CATEGORY_HOURLY_RATE = {
+    "pottery": 120,
+    "textile": 180,
+    "jewelry": 200,
+    "woodwork": 160,
+    "handicraft": 100,
+    "leather": 150,
+    "metalwork": 170,   # steel bottle, brass, copper -> yahi category use hogi
+}
+DEFAULT_HOURLY_RATE = 150  # fallback agar category match na ho
 
 
 def load_sample_products() -> list:
     with open(DATA_PATH, "r", encoding="utf-8") as f:
         return json.load(f)
+
+
+# --- Category ke hisaab se hourly rate nikalna ---
+def get_hourly_rate_for_category(category: Optional[str]) -> float:
+    if not category:
+        return DEFAULT_HOURLY_RATE
+    return CATEGORY_HOURLY_RATE.get(category.lower().strip(), DEFAULT_HOURLY_RATE)
 
 
 # --- Checker #1: cost info validation (on voice-transcribed text) ---
@@ -34,9 +53,14 @@ def check_cost_details_present(transcribed_text: str) -> dict:
     return {"is_complete": len(missing) == 0, "missing_fields": missing}
 
 
-# --- Static rule: Base Cost ---
-def calculate_base_cost(material_cost: float, hours: float, hourly_rate: float = DEFAULT_HOURLY_RATE) -> float:
-    return round(material_cost + (hours * hourly_rate), 2)
+# --- Static rule: Base Cost (ab category-wise rate use karta hai) ---
+def calculate_base_cost(material_cost: float, hours: float, category: Optional[str] = None) -> dict:
+    hourly_rate = get_hourly_rate_for_category(category)
+    base_cost = round(material_cost + (hours * hourly_rate), 2)
+    return {
+        "base_cost": base_cost,
+        "hourly_rate_used": hourly_rate,
+    }
 
 
 # --- Checker #2: similarity-based market rate ---
@@ -113,7 +137,6 @@ def predict_price(
     material_cost: float,
     hours: float,
     category: Optional[str] = None,
-    hourly_rate: float = DEFAULT_HOURLY_RATE,
 ) -> dict:
     check = check_cost_details_present(transcribed_text)
     if not check["is_complete"]:
@@ -123,7 +146,9 @@ def predict_price(
             "message": "Kripya material cost aur time (hours) bataiye price predict karne ke liye.",
         }
 
-    base_cost = calculate_base_cost(material_cost, hours, hourly_rate)
+    cost_result = calculate_base_cost(material_cost, hours, category)
+    base_cost = cost_result["base_cost"]
+
     similar_products = find_similar_products(description, category)
     market_rate = get_market_rate(similar_products)
 
@@ -132,9 +157,9 @@ def predict_price(
     return {
         "status": "success",
         "base_cost": base_cost,
+        "hourly_rate_used": cost_result["hourly_rate_used"],
         "market_rate": market_rate,
         "similar_products": similar_products,
         **justification,
     }
-
 
