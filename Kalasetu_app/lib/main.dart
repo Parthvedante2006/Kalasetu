@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
+import 'constants.dart';
 import 'theme/app_theme.dart';
-import 'screens/home_screen.dart';
+import 'screens/auth/auth_gate_screen.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Supabase.initialize(
+    url: SupabaseConfig.url,
+    anonKey: SupabaseConfig.anonKey, // ignore: deprecated_member_use
+  );
   runApp(const KalasetuApp());
 }
 
@@ -16,7 +22,7 @@ class KalasetuApp extends StatelessWidget {
       title: 'Kalasetu',
       debugShowCheckedModeBanner: false,
       theme: AppTheme.lightTheme,
-      home: const HomeScreen(),
+      home: const AuthGateScreen(),
     );
   }
 }

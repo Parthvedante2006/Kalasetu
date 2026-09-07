@@ -1,0 +1,20 @@
+[
+  {"category": "pottery", "material": "clay", "description": "handmade terracotta clay pot with traditional painted design", "market_price": 450},
+  {"category": "pottery", "material": "clay", "description": "blue pottery decorative vase handcrafted jaipur style", "market_price": 800},
+  {"category": "textile", "material": "cotton", "description": "handwoven cotton saree with block print design", "market_price": 1200},
+  {"category": "textile", "material": "silk", "description": "banarasi silk saree with zari border handloom", "market_price": 3500},
+  {"category": "textile", "material": "cotton", "description": "block printed cotton bedsheet set traditional design", "market_price": 900},
+  {"category": "jewelry", "material": "silver", "description": "oxidized silver jhumka earrings handmade tribal design", "market_price": 350},
+  {"category": "jewelry", "material": "beads", "description": "handmade beaded necklace colorful tribal style", "market_price": 250},
+  {"category": "woodwork", "material": "wood", "description": "hand carved wooden elephant showpiece decorative", "market_price": 600},
+  {"category": "woodwork", "material": "wood", "description": "wooden hand carved jewelry box with lock", "market_price": 750},
+  {"category": "handicraft", "material": "bamboo", "description": "bamboo handwoven basket for storage decorative", "market_price": 300},
+  {"category": "handicraft", "material": "jute", "description": "jute handbag eco friendly handmade design", "market_price": 400},
+  {"category": "leather", "material": "leather", "description": "handmade leather juti footwear traditional punjabi design", "market_price": 700},
+  {"category": "metalwork", "material": "brass", "description": "brass handcrafted decorative diya set traditional", "market_price": 550},
+  {"category": "metalwork", "material": "copper", "description": "copper hand engraved water bottle traditional design", "market_price": 650},
+  {"category": "textile", "material": "wool", "description": "handwoven wool shawl kashmiri traditional pattern", "market_price": 2000}
+]
+
+
+

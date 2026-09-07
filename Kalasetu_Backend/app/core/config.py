@@ -4,6 +4,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 GROQ_API_KEY = os.getenv("GROQ_API_KEY")
+SUPABASE_JWT_SECRET = os.getenv("SUPABASE_JWT_SECRET")
 
 # Directory where enhanced product images are saved on the laptop
 STORAGE_DIR = os.path.join(os.path.dirname(__file__), "..", "storage", "images")
