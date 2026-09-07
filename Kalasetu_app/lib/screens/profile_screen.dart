@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import '../l10n/app_localizations.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import '../theme/app_theme.dart';
+import '../services/locale_controller.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -49,7 +51,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           .from('listings')
           .select('id')
           .eq('user_id', currentUser.id);
-      
+
       // 3. Fetch B2B submissions count
       final submissionsRes = await db
           .from('vendor_submissions')
@@ -74,32 +76,57 @@ class _ProfileScreenState extends State<ProfileScreen> {
     }
   }
 
-  Future<void> _signOut() async {
-    await Supabase.instance.client.auth.signOut();
+  Future<void> _updateLanguage(String newLang) async {
+    // 1. Update app locale immediately across the app
+    localeController.setLocale(newLang);
+
+    setState(() {
+      if (_profileData != null) {
+        _profileData!['preferred_language'] = newLang;
+      }
+    });
+
+    // 2. Persist to Supabase DB profiles table
+    final currentUser = Supabase.instance.client.auth.currentUser;
+    if (currentUser != null) {
+      try {
+        await Supabase.instance.client
+            .from('profiles')
+            .update({'preferred_language': newLang})
+            .eq('id', currentUser.id);
+      } catch (_) {}
+    }
+
+    if (mounted) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(
+            newLang == 'hi'
+                ? 'भाषा बदलकर हिंदी कर दी गई है'
+                : (newLang == 'mr'
+                    ? 'भाषा बदलून मराठी करण्यात आली आहे'
+                    : 'App language changed to English'),
+          ),
+          duration: const Duration(seconds: 2),
+        ),
+      );
+    }
   }
 
-  String _getLanguageLabel(String? code) {
-    switch (code?.toLowerCase()) {
-      case 'hi':
-        return 'Hindi — हिंदी';
-      case 'mr':
-        return 'Marathi — मराठी';
-      case 'gu':
-        return 'Gujarati — ગુજરાતી';
-      case 'ta':
-        return 'Tamil — தமிழ்';
-      case 'en':
-      default:
-        return 'English';
+  Future<void> _signOut() async {
+    await Supabase.instance.client.auth.signOut();
+    if (mounted) {
+      Navigator.of(context).popUntil((route) => route.isFirst);
     }
   }
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
     final user = Supabase.instance.client.auth.currentUser;
     final email = user?.email ?? 'No email associated';
     final fullName = _profileData?['full_name'] as String? ?? user?.userMetadata?['full_name'] as String? ?? 'Artisan User';
-    final langCode = _profileData?['preferred_language'] as String? ?? user?.userMetadata?['preferred_language'] as String? ?? 'en';
+    final currentLang = localeController.locale.languageCode;
     final createdAtStr = user?.createdAt != null
         ? user!.createdAt.split('T')[0]
         : 'Recently';
@@ -107,7 +134,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     return Scaffold(
       backgroundColor: AppColors.handloomCream,
       appBar: AppBar(
-        title: const Text('Artisan Profile'),
+        title: Text(l10n?.artisanProfile ?? 'Artisan Profile'),
         actions: [
           IconButton(
             icon: const Icon(Icons.refresh_rounded),
@@ -178,9 +205,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               color: AppColors.turmeric.withValues(alpha: 0.25),
                               borderRadius: BorderRadius.circular(12),
                             ),
-                            child: const Text(
-                              'Verified Artisan Member',
-                              style: TextStyle(
+                            child: Text(
+                              l10n?.verifiedArtisan ?? 'Verified Artisan Member',
+                              style: const TextStyle(
                                 color: AppColors.turmeric,
                                 fontSize: 11,
                                 fontWeight: FontWeight.bold,
@@ -203,7 +230,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     child: _StatCard(
                       icon: Icons.inventory_2_rounded,
                       value: _totalListings.toString(),
-                      label: 'Total Products',
+                      label: l10n?.totalProducts ?? 'Total Products',
                       color: AppColors.terracotta,
                     ),
                   ),
@@ -212,7 +239,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     child: _StatCard(
                       icon: Icons.storefront_rounded,
                       value: _b2bSubmissions.toString(),
-                      label: 'B2B Proposals',
+                      label: l10n?.b2bProposals ?? 'B2B Proposals',
                       color: AppColors.indigo,
                     ),
                   ),
@@ -222,7 +249,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               const SizedBox(height: 24),
 
               Text(
-                'Account Information',
+                l10n?.accountInformation ?? 'Account Information',
                 style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                       fontWeight: FontWeight.bold,
                       color: AppColors.indigo,
@@ -242,32 +269,78 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     children: [
                       _DetailRow(
                         icon: Icons.person_outline_rounded,
-                        label: 'Full Name',
+                        label: l10n?.fullName ?? 'Full Name',
                         value: fullName,
                       ),
                       const Divider(height: 24),
                       _DetailRow(
                         icon: Icons.email_outlined,
-                        label: 'Email Address',
+                        label: l10n?.emailAddress ?? 'Email Address',
                         value: email,
                       ),
                       const Divider(height: 24),
-                      _DetailRow(
-                        icon: Icons.translate_rounded,
-                        label: 'Preferred Language',
-                        value: _getLanguageLabel(langCode),
+
+                      // Interactive Preferred Language Picker
+                      Row(
+                        children: [
+                          const Icon(Icons.translate_rounded, color: AppColors.indigo, size: 20),
+                          const SizedBox(width: 12),
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  l10n?.preferredLanguage ?? 'Preferred Language',
+                                  style: TextStyle(fontSize: 11, color: Colors.grey[600]),
+                                ),
+                                const SizedBox(height: 2),
+                                DropdownButtonHideUnderline(
+                                  child: DropdownButton<String>(
+                                    value: currentLang,
+                                    isDense: true,
+                                    style: const TextStyle(
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.bold,
+                                      color: AppColors.indigo,
+                                    ),
+                                    items: [
+                                      DropdownMenuItem(
+                                        value: 'en',
+                                        child: Text(l10n?.english ?? 'English'),
+                                      ),
+                                      DropdownMenuItem(
+                                        value: 'hi',
+                                        child: Text(l10n?.hindi ?? 'Hindi — हिंदी'),
+                                      ),
+                                      DropdownMenuItem(
+                                        value: 'mr',
+                                        child: Text(l10n?.marathi ?? 'Marathi — मराठी'),
+                                      ),
+                                    ],
+                                    onChanged: (val) {
+                                      if (val != null) {
+                                        _updateLanguage(val);
+                                      }
+                                    },
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
                       ),
+
                       const Divider(height: 24),
                       _DetailRow(
                         icon: Icons.badge_outlined,
-                        label: 'Artisan User ID',
+                        label: l10n?.artisanUserId ?? 'Artisan User ID',
                         value: user?.id ?? 'Unknown',
                         isCompact: true,
                       ),
                       const Divider(height: 24),
                       _DetailRow(
                         icon: Icons.calendar_today_rounded,
-                        label: 'Member Since',
+                        label: l10n?.memberSince ?? 'Member Since',
                         value: createdAtStr,
                       ),
                     ],
@@ -305,9 +378,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ),
                 onPressed: _signOut,
                 icon: const Icon(Icons.logout_rounded),
-                label: const Text(
-                  'Sign Out',
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                label: Text(
+                  l10n?.signOut ?? 'Sign Out',
+                  style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                 ),
               ),
               const SizedBox(height: 24),

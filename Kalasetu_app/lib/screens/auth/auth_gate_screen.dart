@@ -8,14 +8,19 @@ class AuthGateScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Check initial session
-    final initialSession = Supabase.instance.client.auth.currentSession;
-
     return StreamBuilder<AuthState>(
       stream: Supabase.instance.client.auth.onAuthStateChange,
       builder: (context, snapshot) {
-        final session = snapshot.data?.session ?? initialSession;
-        if (session != null) {
+        if (snapshot.hasData) {
+          final session = snapshot.data!.session;
+          if (session != null) {
+            return const HomeScreen();
+          }
+          return const LoginScreen();
+        }
+
+        final currentSession = Supabase.instance.client.auth.currentSession;
+        if (currentSession != null) {
           return const HomeScreen();
         }
         return const LoginScreen();

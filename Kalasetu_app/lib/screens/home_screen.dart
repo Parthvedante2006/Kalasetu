@@ -7,6 +7,7 @@ import '../services/api_service.dart';
 import 'capture_screen.dart';
 import 'product_detail_screen.dart';
 import 'b2b/vendor_list_screen.dart';
+import '../l10n/app_localizations.dart';
 import 'learner_screen.dart';
 import 'chatbot_screen.dart';
 import 'profile_screen.dart';
@@ -41,6 +42,9 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Future<void> _signOut() async {
     await Supabase.instance.client.auth.signOut();
+    if (mounted) {
+      Navigator.of(context).popUntil((route) => route.isFirst);
+    }
   }
 
   void _startAddNewProductFlow() async {
@@ -60,6 +64,8 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
+
     return Scaffold(
       body: IndexedStack(
         index: _currentIndex,
@@ -90,9 +96,9 @@ class _HomeScreenState extends State<HomeScreen> {
         backgroundColor: AppColors.turmeric,
         elevation: 6,
         icon: const Icon(Icons.smart_toy_rounded, color: Colors.white, size: 24),
-        label: const Text(
-          'Sahayak AI',
-          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 13),
+        label: Text(
+          l10n?.sahayakAI ?? 'Sahayak AI',
+          style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 13),
         ),
         onPressed: _openChatbot,
       ),
@@ -128,7 +134,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     // Tab 0: Home
                     _NavItem(
                       icon: Icons.grid_view_rounded,
-                      label: 'Home',
+                      label: l10n?.home ?? 'Home',
                       isSelected: _currentIndex == 0,
                       onTap: () => setState(() => _currentIndex = 0),
                     ),
@@ -136,7 +142,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     // Tab 1: Explore B2B
                     _NavItem(
                       icon: Icons.storefront_rounded,
-                      label: 'Explore',
+                      label: l10n?.explore ?? 'Explore',
                       isSelected: _currentIndex == 1,
                       onTap: () => setState(() => _currentIndex = 1),
                     ),
@@ -147,7 +153,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     // Tab 2: Learner Hub
                     _NavItem(
                       icon: Icons.school_rounded,
-                      label: 'Learner',
+                      label: l10n?.learner ?? 'Learner',
                       isSelected: _currentIndex == 2,
                       onTap: () => setState(() => _currentIndex = 2),
                     ),
@@ -155,7 +161,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     // Tab 3: Profile
                     _NavItem(
                       icon: Icons.person_rounded,
-                      label: 'Profile',
+                      label: l10n?.profile ?? 'Profile',
                       isSelected: _currentIndex == 3,
                       onTap: () => setState(() => _currentIndex = 3),
                     ),
@@ -201,8 +207,8 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                   const SizedBox(height: 3),
                   Text(
-                    'Add New',
-                    style: TextStyle(
+                    l10n?.addNew ?? 'Add New',
+                    style: const TextStyle(
                       fontSize: 11,
                       fontWeight: FontWeight.bold,
                       color: AppColors.terracotta,
@@ -287,12 +293,32 @@ class _HomeListingsTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
+
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Kalasetu'),
+        backgroundColor: AppColors.handloomCream,
+        elevation: 3,
+        shadowColor: AppColors.warmCharcoal.withValues(alpha: 0.25),
+        surfaceTintColor: Colors.transparent,
+        shape: Border(
+          bottom: BorderSide(
+            color: AppColors.indigo.withValues(alpha: 0.12),
+            width: 1,
+          ),
+        ),
+        title: Text(
+          l10n?.appTitle ?? 'Kalasetu',
+          style: const TextStyle(
+            fontSize: 24,
+            fontWeight: FontWeight.bold,
+            letterSpacing: 0.6,
+            color: AppColors.indigo,
+          ),
+        ),
         actions: [
           IconButton(
-            icon: const Icon(Icons.logout_rounded),
+            icon: const Icon(Icons.logout_rounded, color: AppColors.indigo),
             tooltip: 'Sign out',
             onPressed: onSignOut,
           ),
