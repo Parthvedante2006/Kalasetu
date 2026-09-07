@@ -9,6 +9,7 @@ import 'product_detail_screen.dart';
 import 'b2b/vendor_list_screen.dart';
 import 'learner_screen.dart';
 import 'chatbot_screen.dart';
+import 'profile_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -78,6 +79,8 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           // Tab 2: Learner Hub
           const LearnerScreen(),
+          // Tab 3: Artisan Profile
+          const ProfileScreen(),
         ],
       ),
 
@@ -101,10 +104,16 @@ class _HomeScreenState extends State<HomeScreen> {
         children: [
           Container(
             decoration: BoxDecoration(
-              color: Colors.white,
+              color: AppColors.handloomCream,
+              border: Border(
+                top: BorderSide(
+                  color: AppColors.indigo.withValues(alpha: 0.12),
+                  width: 1,
+                ),
+              ),
               boxShadow: [
                 BoxShadow(
-                  color: Colors.black.withValues(alpha: 0.08),
+                  color: AppColors.warmCharcoal.withValues(alpha: 0.06),
                   blurRadius: 16,
                   offset: const Offset(0, -4),
                 ),
@@ -112,7 +121,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             child: SafeArea(
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
@@ -133,7 +142,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
 
                     // Placeholder spacing for raised center button
-                    const SizedBox(width: 64),
+                    const SizedBox(width: 48),
 
                     // Tab 2: Learner Hub
                     _NavItem(
@@ -141,6 +150,14 @@ class _HomeScreenState extends State<HomeScreen> {
                       label: 'Learner',
                       isSelected: _currentIndex == 2,
                       onTap: () => setState(() => _currentIndex = 2),
+                    ),
+
+                    // Tab 3: Profile
+                    _NavItem(
+                      icon: Icons.person_rounded,
+                      label: 'Profile',
+                      isSelected: _currentIndex == 3,
+                      onTap: () => setState(() => _currentIndex = 3),
                     ),
                   ],
                 ),
@@ -174,7 +191,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           offset: const Offset(0, 4),
                         ),
                       ],
-                      border: Border.all(color: Colors.white, width: 3),
+                      border: Border.all(color: AppColors.handloomCream, width: 3),
                     ),
                     child: const Icon(
                       Icons.add_a_photo_rounded,
@@ -216,24 +233,35 @@ class _NavItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final color = isSelected ? AppColors.indigo : Colors.grey[600];
+    final activeColor = AppColors.indigo;
+    final inactiveColor = AppColors.warmCharcoal.withValues(alpha: 0.55);
 
     return InkWell(
-      borderRadius: BorderRadius.circular(12),
+      borderRadius: BorderRadius.circular(16),
       onTap: onTap,
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 6),
+        decoration: isSelected
+            ? BoxDecoration(
+          color: AppColors.indigo.withValues(alpha: 0.08),
+          borderRadius: BorderRadius.circular(16),
+        )
+            : null,
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Icon(icon, color: color, size: 24),
+            Icon(
+              icon,
+              color: isSelected ? activeColor : inactiveColor,
+              size: 24,
+            ),
             const SizedBox(height: 2),
             Text(
               label,
               style: TextStyle(
                 fontSize: 11,
-                fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
-                color: color,
+                fontWeight: isSelected ? FontWeight.bold : FontWeight.w500,
+                color: isSelected ? activeColor : inactiveColor,
               ),
             ),
           ],
@@ -275,29 +303,29 @@ class _HomeListingsTab extends StatelessWidget {
         child: loading
             ? const Center(child: CircularProgressIndicator())
             : listings.isEmpty
-                ? _emptyState(context)
-                : ListView.builder(
-                    padding: const EdgeInsets.all(16),
-                    itemCount: listings.length,
-                    itemBuilder: (ctx, i) => _ListingCard(
-                      listing: listings[i],
-                      onRefreshNeeded: onRefresh,
-                    ),
-                  ),
+            ? _emptyState(context)
+            : ListView.builder(
+          padding: const EdgeInsets.all(16),
+          itemCount: listings.length,
+          itemBuilder: (ctx, i) => _ListingCard(
+            listing: listings[i],
+            onRefreshNeeded: onRefresh,
+          ),
+        ),
       ),
     );
   }
 
   Widget _emptyState(BuildContext context) => Center(
-        child: Column(mainAxisSize: MainAxisSize.min, children: [
-          Icon(Icons.inventory_2_outlined, size: 72, color: AppColors.turmeric.withValues(alpha: 0.6)),
-          const SizedBox(height: 16),
-          Text('No listings yet', style: Theme.of(context).textTheme.headlineSmall),
-          const SizedBox(height: 8),
-          Text('Tap "+ Add New" below to add your first product',
-              style: Theme.of(context).textTheme.bodyLarge),
-        ]),
-      );
+    child: Column(mainAxisSize: MainAxisSize.min, children: [
+      Icon(Icons.inventory_2_outlined, size: 72, color: AppColors.turmeric.withValues(alpha: 0.6)),
+      const SizedBox(height: 16),
+      Text('No listings yet', style: Theme.of(context).textTheme.headlineSmall),
+      const SizedBox(height: 8),
+      Text('Tap "+ Add New" below to add your first product',
+          style: Theme.of(context).textTheme.bodyLarge),
+    ]),
+  );
 }
 
 class _ListingCard extends StatefulWidget {
@@ -361,9 +389,9 @@ class _ListingCardState extends State<_ListingCard> {
             child: _imageBytes != null
                 ? Image.memory(_imageBytes!, fit: BoxFit.cover)
                 : Container(
-                    color: AppColors.handloomCream,
-                    child: Icon(Icons.image_rounded, color: AppColors.indigo.withValues(alpha: 0.3)),
-                  ),
+              color: AppColors.handloomCream,
+              child: Icon(Icons.image_rounded, color: AppColors.indigo.withValues(alpha: 0.3)),
+            ),
           ),
           const SizedBox(width: 12),
           Expanded(
