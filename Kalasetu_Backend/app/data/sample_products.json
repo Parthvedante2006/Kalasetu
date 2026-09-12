@@ -1,20 +1,948 @@
 [
-  {"category": "pottery", "material": "clay", "description": "handmade terracotta clay pot with traditional painted design", "market_price": 450},
-  {"category": "pottery", "material": "clay", "description": "blue pottery decorative vase handcrafted jaipur style", "market_price": 800},
-  {"category": "textile", "material": "cotton", "description": "handwoven cotton saree with block print design", "market_price": 1200},
-  {"category": "textile", "material": "silk", "description": "banarasi silk saree with zari border handloom", "market_price": 3500},
-  {"category": "textile", "material": "cotton", "description": "block printed cotton bedsheet set traditional design", "market_price": 900},
-  {"category": "jewelry", "material": "silver", "description": "oxidized silver jhumka earrings handmade tribal design", "market_price": 350},
-  {"category": "jewelry", "material": "beads", "description": "handmade beaded necklace colorful tribal style", "market_price": 250},
-  {"category": "woodwork", "material": "wood", "description": "hand carved wooden elephant showpiece decorative", "market_price": 600},
-  {"category": "woodwork", "material": "wood", "description": "wooden hand carved jewelry box with lock", "market_price": 750},
-  {"category": "handicraft", "material": "bamboo", "description": "bamboo handwoven basket for storage decorative", "market_price": 300},
-  {"category": "handicraft", "material": "jute", "description": "jute handbag eco friendly handmade design", "market_price": 400},
-  {"category": "leather", "material": "leather", "description": "handmade leather juti footwear traditional punjabi design", "market_price": 700},
-  {"category": "metalwork", "material": "brass", "description": "brass handcrafted decorative diya set traditional", "market_price": 550},
-  {"category": "metalwork", "material": "copper", "description": "copper hand engraved water bottle traditional design", "market_price": 650},
-  {"category": "textile", "material": "wool", "description": "handwoven wool shawl kashmiri traditional pattern", "market_price": 2000}
+  {
+    "category": "pottery",
+    "material": "clay",
+    "description": "handmade terracotta clay pot with traditional painted design",
+    "market_price": 450
+  },
+  {
+    "category": "pottery",
+    "material": "clay",
+    "description": "blue pottery decorative vase handcrafted jaipur style",
+    "market_price": 800
+  },
+  {
+    "category": "pottery",
+    "material": "clay",
+    "description": "terracotta warrior figurine handcrafted bankura style",
+    "market_price": 950
+  },
+  {
+    "category": "pottery",
+    "material": "clay",
+    "description": "black pottery handmade nizamabad traditional design",
+    "market_price": 1100
+  },
+  {
+    "category": "pottery",
+    "material": "clay",
+    "description": "khurja pottery hand painted dinner set",
+    "market_price": 1800
+  },
+  {
+    "category": "pottery",
+    "material": "clay",
+    "description": "terracotta wall hanging handmade tribal motif",
+    "market_price": 550
+  },
+  {
+    "category": "pottery",
+    "material": "clay",
+    "description": "clay diya set hand molded traditional festive",
+    "market_price": 200
+  },
+  {
+    "category": "pottery",
+    "material": "clay",
+    "description": "longpi black pottery manipur handmade bowl",
+    "market_price": 700
+  },
+  {
+    "category": "pottery",
+    "material": "clay",
+    "description": "blue pottery hand painted coasters set of six",
+    "market_price": 600
+  },
+  {
+    "category": "pottery",
+    "material": "clay",
+    "description": "terracotta jewelry set handcrafted tribal design",
+    "market_price": 480
+  },
+  {
+    "category": "pottery",
+    "material": "clay",
+    "description": "molela clay plaques rajasthan handmade religious",
+    "market_price": 650
+  },
+  {
+    "category": "pottery",
+    "material": "clay",
+    "description": "terracotta tea set handmade rustic finish",
+    "market_price": 900
+  },
+  {
+    "category": "textile",
+    "material": "cotton",
+    "description": "handwoven cotton saree with block print design",
+    "market_price": 1200
+  },
+  {
+    "category": "textile",
+    "material": "silk",
+    "description": "banarasi silk saree with zari border handloom",
+    "market_price": 3500
+  },
+  {
+    "category": "textile",
+    "material": "cotton",
+    "description": "block printed cotton bedsheet set traditional design",
+    "market_price": 900
+  },
+  {
+    "category": "textile",
+    "material": "wool",
+    "description": "handwoven wool shawl kashmiri traditional pattern",
+    "market_price": 2000
+  },
+  {
+    "category": "textile",
+    "material": "silk",
+    "description": "kanjeevaram silk saree handwoven temple border",
+    "market_price": 4200
+  },
+  {
+    "category": "textile",
+    "material": "cotton",
+    "description": "ikat handwoven cotton dupatta odisha design",
+    "market_price": 850
+  },
+  {
+    "category": "textile",
+    "material": "silk",
+    "description": "chanderi silk saree handloom light weight",
+    "market_price": 2800
+  },
+  {
+    "category": "textile",
+    "material": "cotton",
+    "description": "kalamkari hand painted cotton fabric traditional",
+    "market_price": 700
+  },
+  {
+    "category": "textile",
+    "material": "wool",
+    "description": "pashmina hand embroidered stole kashmir",
+    "market_price": 3200
+  },
+  {
+    "category": "textile",
+    "material": "cotton",
+    "description": "bagru hand block print cotton kurta fabric",
+    "market_price": 550
+  },
+  {
+    "category": "textile",
+    "material": "silk",
+    "description": "tussar silk handloom saree bengal traditional",
+    "market_price": 2600
+  },
+  {
+    "category": "textile",
+    "material": "cotton",
+    "description": "phulkari hand embroidered cotton dupatta punjab",
+    "market_price": 950
+  },
+  {
+    "category": "textile",
+    "material": "cotton",
+    "description": "madhubani hand painted cotton wall cloth",
+    "market_price": 750
+  },
+  {
+    "category": "textile",
+    "material": "wool",
+    "description": "kullu handwoven wool cap himachal traditional",
+    "market_price": 300
+  },
+  {
+    "category": "textile",
+    "material": "cotton",
+    "description": "handloom cotton gamcha traditional bengal",
+    "market_price": 150
+  },
+  {
+    "category": "textile",
+    "material": "silk",
+    "description": "patola silk saree handwoven gujarat double ikat",
+    "market_price": 5500
+  },
+  {
+    "category": "textile",
+    "material": "cotton",
+    "description": "bandhani tie dye cotton dupatta rajasthan",
+    "market_price": 600
+  },
+  {
+    "category": "textile",
+    "material": "jute",
+    "description": "jute handwoven table runner eco friendly design",
+    "market_price": 350
+  },
+  {
+    "category": "jewelry",
+    "material": "silver",
+    "description": "oxidized silver jhumka earrings handmade tribal design",
+    "market_price": 350
+  },
+  {
+    "category": "jewelry",
+    "material": "beads",
+    "description": "handmade beaded necklace colorful tribal style",
+    "market_price": 250
+  },
+  {
+    "category": "jewelry",
+    "material": "silver",
+    "description": "silver filigree earrings handcrafted odisha design",
+    "market_price": 600
+  },
+  {
+    "category": "jewelry",
+    "material": "beads",
+    "description": "terracotta beaded necklace handmade tribal jewelry",
+    "market_price": 300
+  },
+  {
+    "category": "jewelry",
+    "material": "silver",
+    "description": "tribal silver anklet handmade rajasthan design",
+    "market_price": 450
+  },
+  {
+    "category": "jewelry",
+    "material": "beads",
+    "description": "kutch beaded choker handmade gujarat style",
+    "market_price": 400
+  },
+  {
+    "category": "jewelry",
+    "material": "silver",
+    "description": "meenakari silver ring handcrafted enamel work",
+    "market_price": 550
+  },
+  {
+    "category": "jewelry",
+    "material": "beads",
+    "description": "naga tribal beaded necklace handmade northeast",
+    "market_price": 500
+  },
+  {
+    "category": "jewelry",
+    "material": "silver",
+    "description": "silver toe rings handmade traditional pair",
+    "market_price": 200
+  },
+  {
+    "category": "jewelry",
+    "material": "beads",
+    "description": "glass beaded bracelet set handmade colorful",
+    "market_price": 180
+  },
+  {
+    "category": "jewelry",
+    "material": "silver",
+    "description": "dhokra silver plated pendant handmade tribal",
+    "market_price": 380
+  },
+  {
+    "category": "jewelry",
+    "material": "beads",
+    "description": "shell beaded necklace handmade coastal design",
+    "market_price": 280
+  },
+  {
+    "category": "woodwork",
+    "material": "wood",
+    "description": "hand carved wooden elephant showpiece decorative",
+    "market_price": 600
+  },
+  {
+    "category": "woodwork",
+    "material": "wood",
+    "description": "wooden hand carved jewelry box with lock",
+    "market_price": 750
+  },
+  {
+    "category": "woodwork",
+    "material": "wood",
+    "description": "channapatna wooden toy set handmade lacquered",
+    "market_price": 450
+  },
+  {
+    "category": "woodwork",
+    "material": "wood",
+    "description": "sandalwood hand carved ganesha idol traditional",
+    "market_price": 1200
+  },
+  {
+    "category": "woodwork",
+    "material": "wood",
+    "description": "rosewood hand carved photo frame decorative",
+    "market_price": 550
+  },
+  {
+    "category": "woodwork",
+    "material": "wood",
+    "description": "wooden hand carved wall panel traditional motif",
+    "market_price": 1500
+  },
+  {
+    "category": "woodwork",
+    "material": "wood",
+    "description": "kashmiri walnut wood carved tray handmade",
+    "market_price": 850
+  },
+  {
+    "category": "woodwork",
+    "material": "wood",
+    "description": "wooden hand carved chess set traditional design",
+    "market_price": 1100
+  },
+  {
+    "category": "woodwork",
+    "material": "wood",
+    "description": "saharanpur wood carved furniture piece handmade",
+    "market_price": 2200
+  },
+  {
+    "category": "woodwork",
+    "material": "wood",
+    "description": "wooden hand painted rocking horse toy handmade",
+    "market_price": 700
+  },
+  {
+    "category": "woodwork",
+    "material": "wood",
+    "description": "teakwood hand carved door panel traditional",
+    "market_price": 3000
+  },
+  {
+    "category": "woodwork",
+    "material": "wood",
+    "description": "wooden hand carved mask decorative tribal design",
+    "market_price": 650
+  },
+  {
+    "category": "handicraft",
+    "material": "bamboo",
+    "description": "bamboo handwoven basket for storage decorative",
+    "market_price": 300
+  },
+  {
+    "category": "handicraft",
+    "material": "jute",
+    "description": "jute handbag eco friendly handmade design",
+    "market_price": 400
+  },
+  {
+    "category": "handicraft",
+    "material": "cane",
+    "description": "hand woven cane umbrella decorative traditional style",
+    "market_price": 500
+  },
+  {
+    "category": "handicraft",
+    "material": "bamboo",
+    "description": "bamboo handcrafted lamp shade traditional design",
+    "market_price": 650
+  },
+  {
+    "category": "handicraft",
+    "material": "cane",
+    "description": "cane handwoven chair traditional assam style",
+    "market_price": 1800
+  },
+  {
+    "category": "handicraft",
+    "material": "bamboo",
+    "description": "bamboo wind chime handmade decorative",
+    "market_price": 250
+  },
+  {
+    "category": "handicraft",
+    "material": "coir",
+    "description": "coir handwoven doormat eco friendly traditional",
+    "market_price": 300
+  },
+  {
+    "category": "handicraft",
+    "material": "bamboo",
+    "description": "bamboo handcrafted pen stand decorative",
+    "market_price": 180
+  },
+  {
+    "category": "handicraft",
+    "material": "cane",
+    "description": "cane handwoven fruit basket traditional design",
+    "market_price": 350
+  },
+  {
+    "category": "handicraft",
+    "material": "bamboo",
+    "description": "bamboo handmade fan traditional kerala style",
+    "market_price": 220
+  },
+  {
+    "category": "handicraft",
+    "material": "jute",
+    "description": "jute handwoven wall hanging decorative eco design",
+    "market_price": 380
+  },
+  {
+    "category": "handicraft",
+    "material": "coir",
+    "description": "coir handmade rope basket traditional design",
+    "market_price": 280
+  },
+  {
+    "category": "leather",
+    "material": "leather",
+    "description": "handmade leather juti footwear traditional punjabi design",
+    "market_price": 700
+  },
+  {
+    "category": "leather",
+    "material": "leather",
+    "description": "kolhapuri leather chappal handmade traditional",
+    "market_price": 550
+  },
+  {
+    "category": "leather",
+    "material": "leather",
+    "description": "hand embroidered leather bag traditional rajasthan",
+    "market_price": 1200
+  },
+  {
+    "category": "leather",
+    "material": "leather",
+    "description": "leather hand tooled wallet traditional design",
+    "market_price": 450
+  },
+  {
+    "category": "leather",
+    "material": "leather",
+    "description": "handmade leather mojari footwear jaipur style",
+    "market_price": 650
+  },
+  {
+    "category": "leather",
+    "material": "leather",
+    "description": "leather hand painted lampshade traditional andhra",
+    "market_price": 800
+  },
+  {
+    "category": "metalwork",
+    "material": "brass",
+    "description": "brass handcrafted decorative diya set traditional",
+    "market_price": 550
+  },
+  {
+    "category": "metalwork",
+    "material": "copper",
+    "description": "copper hand engraved water bottle traditional design",
+    "market_price": 650
+  },
+  {
+    "category": "metalwork",
+    "material": "brass",
+    "description": "brass hand engraved wall plate traditional design",
+    "market_price": 900
+  },
+  {
+    "category": "metalwork",
+    "material": "bronze",
+    "description": "dhokra bronze handmade figurine tribal design",
+    "market_price": 750
+  },
+  {
+    "category": "metalwork",
+    "material": "copper",
+    "description": "copper hand hammered jug traditional design",
+    "market_price": 700
+  },
+  {
+    "category": "metalwork",
+    "material": "brass",
+    "description": "bidri handcrafted brass vase traditional hyderabad",
+    "market_price": 1400
+  },
+  {
+    "category": "metalwork",
+    "material": "copper",
+    "description": "copper hand engraved plate set traditional",
+    "market_price": 1100
+  },
+  {
+    "category": "metalwork",
+    "material": "brass",
+    "description": "brass handcrafted temple bell traditional design",
+    "market_price": 480
+  },
+  {
+    "category": "metalwork",
+    "material": "bronze",
+    "description": "bronze hand cast ganesha idol traditional swamimalai",
+    "market_price": 1600
+  },
+  {
+    "category": "metalwork",
+    "material": "copper",
+    "description": "copper hand beaten tumbler set traditional design",
+    "market_price": 550
+  },
+  {
+    "category": "metalwork",
+    "material": "brass",
+    "description": "brass hand engraved incense holder traditional",
+    "market_price": 380
+  },
+  {
+    "category": "metalwork",
+    "material": "bronze",
+    "description": "bronze hand cast nataraja statue traditional tanjore",
+    "market_price": 2200
+  },
+  {
+    "category": "stone carving",
+    "material": "marble",
+    "description": "hand carved marble jali screen traditional agra",
+    "market_price": 2500
+  },
+  {
+    "category": "stone carving",
+    "material": "marble",
+    "description": "marble hand carved taj mahal replica handmade",
+    "market_price": 900
+  },
+  {
+    "category": "stone carving",
+    "material": "soapstone",
+    "description": "hand carved soapstone elephant decorative odisha",
+    "market_price": 600
+  },
+  {
+    "category": "stone carving",
+    "material": "marble",
+    "description": "marble hand inlay coaster set pietra dura design",
+    "market_price": 750
+  },
+  {
+    "category": "stone carving",
+    "material": "granite",
+    "description": "hand carved stone lamp traditional temple design",
+    "market_price": 1300
+  },
+  {
+    "category": "stone carving",
+    "material": "marble",
+    "description": "marble hand carved jewelry box inlay work",
+    "market_price": 1800
+  },
+  {
+    "category": "paper craft",
+    "material": "paper mache",
+    "description": "hand painted paper mache box kashmiri traditional",
+    "market_price": 550
+  },
+  {
+    "category": "paper craft",
+    "material": "paper mache",
+    "description": "paper mache christmas ornaments handmade set",
+    "market_price": 350
+  },
+  {
+    "category": "paper craft",
+    "material": "handmade paper",
+    "description": "handmade paper diary traditional cover design",
+    "market_price": 280
+  },
+  {
+    "category": "paper craft",
+    "material": "paper mache",
+    "description": "paper mache wall mask handcrafted kashmir",
+    "market_price": 450
+  },
+  {
+    "category": "paper craft",
+    "material": "handmade paper",
+    "description": "handmade paper lampshade traditional design",
+    "market_price": 400
+  },
+  {
+    "category": "glass work",
+    "material": "glass",
+    "description": "hand blown glass bangles firozabad traditional",
+    "market_price": 300
+  },
+  {
+    "category": "glass work",
+    "material": "glass",
+    "description": "hand painted glass vase traditional design",
+    "market_price": 650
+  },
+  {
+    "category": "glass work",
+    "material": "glass",
+    "description": "hand blown glass christmas ornaments set handmade",
+    "market_price": 400
+  },
+  {
+    "category": "glass work",
+    "material": "glass",
+    "description": "stained glass hand crafted wall panel decorative",
+    "market_price": 1200
+  },
+  {
+    "category": "embroidery",
+    "material": "cotton",
+    "description": "chikankari hand embroidered lucknow kurta",
+    "market_price": 1400
+  },
+  {
+    "category": "embroidery",
+    "material": "cotton",
+    "description": "kashida hand embroidered cushion cover kashmir",
+    "market_price": 550
+  },
+  {
+    "category": "embroidery",
+    "material": "silk",
+    "description": "zardozi hand embroidered silk clutch traditional",
+    "market_price": 1200
+  },
+  {
+    "category": "embroidery",
+    "material": "cotton",
+    "description": "kantha hand embroidered cotton stole bengal",
+    "market_price": 700
+  },
+  {
+    "category": "embroidery",
+    "material": "cotton",
+    "description": "mirror work hand embroidered cushion cover gujarat",
+    "market_price": 480
+  },
+  {
+    "category": "embroidery",
+    "material": "cotton",
+    "description": "aari hand embroidered cotton bag traditional design",
+    "market_price": 600
+  },
+  {
+    "category": "lac work",
+    "material": "lac",
+    "description": "lac bangles handmade traditional rajasthan design",
+    "market_price": 250
+  },
+  {
+    "category": "lac work",
+    "material": "lac",
+    "description": "lac hand painted wooden toy jaipur traditional",
+    "market_price": 320
+  },
+  {
+    "category": "lac work",
+    "material": "lac",
+    "description": "lac coated wooden fruit set handmade decorative",
+    "market_price": 380
+  },
+  {
+    "category": "out_of_scope",
+    "material": "electronics",
+    "description": "factory manufactured mobile phone branded",
+    "market_price": 14999,
+    "price_source": "Amazon.in/Flipkart, Sep 2026, category-representative price"
+  },
+  {
+    "category": "out_of_scope",
+    "material": "accessory",
+    "description": "factory manufactured rain umbrella branded",
+    "market_price": 400,
+    "price_source": "Amazon.in/Flipkart, Sep 2026, category-representative price"
+  },
+  {
+    "category": "out_of_scope",
+    "material": "electronics",
+    "description": "factory manufactured laptop branded",
+    "market_price": 35990,
+    "price_source": "Amazon.in/Flipkart, Sep 2026, category-representative price"
+  },
+  {
+    "category": "out_of_scope",
+    "material": "plastic",
+    "description": "factory manufactured plastic chair mass produced",
+    "market_price": 899,
+    "price_source": "Amazon.in/Flipkart, Sep 2026, category-representative price"
+  },
+  {
+    "category": "out_of_scope",
+    "material": "electronics",
+    "description": "factory manufactured bluetooth earphones branded",
+    "market_price": 1499,
+    "price_source": "Amazon.in/Flipkart, Sep 2026, category-representative price"
+  },
+  {
+    "category": "out_of_scope",
+    "material": "appliance",
+    "description": "factory manufactured electric kettle branded",
+    "market_price": 899,
+    "price_source": "Amazon.in/Flipkart, Sep 2026, category-representative price"
+  },
+  {
+    "category": "out_of_scope",
+    "material": "accessory",
+    "description": "factory manufactured sunglasses branded",
+    "market_price": 399,
+    "price_source": "Amazon.in/Flipkart, Sep 2026, category-representative price"
+  },
+  {
+    "category": "out_of_scope",
+    "material": "footwear",
+    "description": "factory manufactured sports shoes branded",
+    "market_price": 1499,
+    "price_source": "Amazon.in/Flipkart, Sep 2026, category-representative price"
+  },
+  {
+    "category": "out_of_scope",
+    "material": "stationery",
+    "description": "factory manufactured plastic pen mass produced",
+    "market_price": 20,
+    "price_source": "Amazon.in/Flipkart, Sep 2026, category-representative price"
+  },
+  {
+    "category": "out_of_scope",
+    "material": "appliance",
+    "description": "factory manufactured microwave oven branded",
+    "market_price": 7490,
+    "price_source": "Amazon.in/Flipkart, Sep 2026, category-representative price"
+  },
+  {
+    "category": "musical instruments",
+    "material": "wood",
+    "description": "hand carved sitar traditional miraj design",
+    "market_price": 8500
+  },
+  {
+    "category": "musical instruments",
+    "material": "wood",
+    "description": "handmade tabla pair traditional design",
+    "market_price": 4200
+  },
+  {
+    "category": "musical instruments",
+    "material": "wood",
+    "description": "handcrafted bamboo flute traditional design",
+    "market_price": 250
+  },
+  {
+    "category": "musical instruments",
+    "material": "wood",
+    "description": "handmade veena traditional thanjavur design",
+    "market_price": 9500
+  },
+  {
+    "category": "musical instruments",
+    "material": "clay",
+    "description": "handmade ghatam clay percussion traditional",
+    "market_price": 1800
+  },
+  {
+    "category": "musical instruments",
+    "material": "wood",
+    "description": "handcrafted ektara traditional folk instrument",
+    "market_price": 600
+  },
+  {
+    "category": "toys",
+    "material": "wood",
+    "description": "channapatna wooden spinning top handmade",
+    "market_price": 180
+  },
+  {
+    "category": "toys",
+    "material": "cloth",
+    "description": "handmade cloth puppet traditional rajasthan",
+    "market_price": 350
+  },
+  {
+    "category": "toys",
+    "material": "clay",
+    "description": "terracotta whistle toy handmade traditional",
+    "market_price": 120
+  },
+  {
+    "category": "toys",
+    "material": "wood",
+    "description": "kondapalli wooden toy set handmade andhra",
+    "market_price": 550
+  },
+  {
+    "category": "toys",
+    "material": "cloth",
+    "description": "handmade stuffed toy elephant traditional design",
+    "market_price": 450
+  },
+  {
+    "category": "toys",
+    "material": "paper mache",
+    "description": "paper mache puppet handmade traditional design",
+    "market_price": 380
+  },
+  {
+    "category": "painting",
+    "material": "canvas",
+    "description": "madhubani hand painted canvas traditional art",
+    "market_price": 1500
+  },
+  {
+    "category": "painting",
+    "material": "canvas",
+    "description": "warli hand painted tribal art canvas",
+    "market_price": 1200
+  },
+  {
+    "category": "painting",
+    "material": "cloth",
+    "description": "pattachitra hand painted scroll odisha traditional",
+    "market_price": 1800
+  },
+  {
+    "category": "painting",
+    "material": "paper",
+    "description": "miniature hand painted rajasthani art traditional",
+    "market_price": 2200
+  },
+  {
+    "category": "painting",
+    "material": "canvas",
+    "description": "tanjore hand painted gold foil art traditional",
+    "market_price": 4500
+  },
+  {
+    "category": "painting",
+    "material": "cloth",
+    "description": "kalamkari hand painted wall art traditional design",
+    "market_price": 1600
+  },
+  {
+    "category": "painting",
+    "material": "paper",
+    "description": "gond hand painted tribal art traditional design",
+    "market_price": 1400
+  },
+  {
+    "category": "home decor",
+    "material": "cotton",
+    "description": "handwoven cotton table mats set traditional design",
+    "market_price": 450
+  },
+  {
+    "category": "home decor",
+    "material": "jute",
+    "description": "jute handwoven floor rug eco friendly design",
+    "market_price": 900
+  },
+  {
+    "category": "home decor",
+    "material": "wood",
+    "description": "wooden hand carved candle stand traditional design",
+    "market_price": 380
+  },
+  {
+    "category": "home decor",
+    "material": "brass",
+    "description": "brass handcrafted door handle set traditional",
+    "market_price": 650
+  },
+  {
+    "category": "home decor",
+    "material": "cane",
+    "description": "cane handwoven room divider traditional design",
+    "market_price": 2500
+  },
+  {
+    "category": "home decor",
+    "material": "cotton",
+    "description": "handloom cotton cushion cover set traditional design",
+    "market_price": 500
+  },
+  {
+    "category": "footwear",
+    "material": "leather",
+    "description": "handmade camel leather jutti bikaner style",
+    "market_price": 600
+  },
+  {
+    "category": "footwear",
+    "material": "jute",
+    "description": "handwoven jute sandals eco friendly traditional",
+    "market_price": 380
+  },
+  {
+    "category": "footwear",
+    "material": "leather",
+    "description": "handmade tribal leather sandals traditional design",
+    "market_price": 480
+  },
+  {
+    "category": "agricultural handicraft",
+    "material": "bamboo",
+    "description": "bamboo handwoven grain storage basket traditional",
+    "market_price": 550
+  },
+  {
+    "category": "agricultural handicraft",
+    "material": "clay",
+    "description": "terracotta handmade water pot traditional matka",
+    "market_price": 280
+  },
+  {
+    "category": "agricultural handicraft",
+    "material": "coir",
+    "description": "coir handwoven farm mat traditional design",
+    "market_price": 320
+  },
+  {
+    "category": "out_of_scope",
+    "material": "electronics",
+    "description": "factory manufactured smartwatch branded",
+    "market_price": 4999,
+    "price_source": "Amazon.in/Flipkart, Sep 2026, category-representative price"
+  },
+  {
+    "category": "out_of_scope",
+    "material": "plastic",
+    "description": "factory manufactured water bottle mass produced",
+    "market_price": 299,
+    "price_source": "Amazon.in/Flipkart, Sep 2026, category-representative price"
+  },
+  {
+    "category": "out_of_scope",
+    "material": "electronics",
+    "description": "factory manufactured television branded",
+    "market_price": 13999,
+    "price_source": "Amazon.in/Flipkart, Sep 2026, category-representative price"
+  },
+  {
+    "category": "out_of_scope",
+    "material": "appliance",
+    "description": "factory manufactured mixer grinder branded",
+    "market_price": 2199,
+    "price_source": "Amazon.in/Flipkart, Sep 2026, category-representative price"
+  },
+  {
+    "category": "out_of_scope",
+    "material": "accessory",
+    "description": "factory manufactured backpack branded mass produced",
+    "market_price": 999,
+    "price_source": "Amazon.in/Flipkart, Sep 2026, category-representative price"
+  },
+  {
+    "category": "out_of_scope",
+    "material": "stationery",
+    "description": "factory manufactured notebook mass produced",
+    "market_price": 60,
+    "price_source": "Amazon.in/Flipkart, Sep 2026, category-representative price"
+  }
 ]
-
-
-

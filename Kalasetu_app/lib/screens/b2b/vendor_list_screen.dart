@@ -1,4 +1,4 @@
-﻿import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import '../../theme/app_theme.dart';
 import '../../services/vendor_service.dart';
 import 'vendor_detail_screen.dart';
@@ -123,7 +123,9 @@ class _VendorListScreenState extends State<VendorListScreen> {
                         );
 
                         if (result != null && context.mounted) {
-                          Navigator.pop(context, result);
+                          if (Navigator.canPop(context)) {
+                            Navigator.pop(context, result);
+                          }
                         }
                       },
                     )),
